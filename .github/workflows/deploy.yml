@@ -31,6 +31,9 @@ jobs:
         docker build -t $DOCKER_IMAGE:latest ./strapi
         docker push $DOCKER_IMAGE:latest
 
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v3
+
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v4
       with:
