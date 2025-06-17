@@ -60,5 +60,5 @@ resource "aws_instance" "strapi_ec2" {
   tags = {
     Name = "StrapiAppServer"
   }
-
+}
 
