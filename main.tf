@@ -1,10 +1,17 @@
 provider "aws" {
   region = "eu-north-1"
 }
+
 variable "dev_public_key" {
   description = "Public key for EC2 access"
   type        = string
 }
+
+variable "dev_private_key" {
+  description = "Private key for SSH access"
+  type        = string
+}
+
 resource "aws_key_pair" "dev_key" {
   key_name   = "dev-key"
   public_key = var.dev_public_key
@@ -25,7 +32,7 @@ resource "aws_security_group" "strapi_sg" {
     from_port   = 1337
     to_port     = 1337
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"] # Consider using your IP for security
+    cidr_blocks = ["0.0.0.0/0"] 
   }
 
   egress {
@@ -60,7 +67,7 @@ resource "aws_instance" "strapi_ec2" {
     connection {
       type        = "ssh"
       user        = "ec2-user"
-      private_key = file("~/.ssh/id_rsa")
+      private_key = var.dev_private_key
       host        = self.public_ip
     }
   }
