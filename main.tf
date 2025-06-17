@@ -1,10 +1,13 @@
 provider "aws" {
   region = "eu-north-1"
 }
-
+variable "dev_public_key" {
+  description = "Public key for EC2 access"
+  type        = string
+}
 resource "aws_key_pair" "dev_key" {
   key_name   = "dev-key"
-  public_key = file("~/.ssh/id_rsa.pub")
+  public_key = var.dev_public_key
 }
 
 resource "aws_security_group" "strapi_sg" {
