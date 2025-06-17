@@ -61,15 +61,4 @@ resource "aws_instance" "strapi_ec2" {
     Name = "StrapiAppServer"
   }
 
-  provisioner "remote-exec" {
-    inline = ["echo EC2 with Amazon Linux is ready!"]
-
-    connection {
-      type        = "ssh"
-      user        = "ec2-user"
-      private_key = var.dev_private_key
-      host        = self.public_ip
-    }
-  }
-}
 
