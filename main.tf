@@ -18,7 +18,7 @@ resource "aws_key_pair" "dev_key" {
 }
 
 resource "aws_security_group" "strapi_sg" {
-  name        = "strapi-sg-N"
+  name        = "strapi-sg-New"
   description = "Allow SSH and Strapi ports"
 
   ingress {
