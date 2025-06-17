@@ -13,7 +13,7 @@ COPY . .
 
 # Copy the environment variables file
 # (Make sure .env is in your context and not .dockerignored)
-COPY .env .env
+# COPY .env .env
 
 # Build the admin panel
 RUN npm run build
